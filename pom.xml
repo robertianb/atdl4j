@@ -42,7 +42,7 @@
 		</repository>
 	</repositories>    
 	<modules>
-		<module>atdl4j-ui-swt</module>
+		<module>atdl4j-ui-swing</module>
 	</modules>
 	<scm>
 		<connection>scm:git:git://github.com/tuler/atdl4j-ui.git</connection>

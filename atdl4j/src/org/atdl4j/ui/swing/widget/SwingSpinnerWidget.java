@@ -36,25 +36,34 @@ public class SwingSpinnerWidget extends AbstractSwingWidget<BigDecimal> {
 	private static final BigDecimal DEFAULT_OUTER_INCREMENT = new BigDecimal(1);
 	private int digits = 0;
 	private JPanel wrapper;
-
-	/**
-	 * SelectionListener that implements the dual spinner behavior.
-	 * 
-	 */
-	public class DoubleSpinnerListener implements ActionListener {
-
-		private JSpinner spinner;
-		private BigDecimal increment;
-
-		public DoubleSpinnerListener(JSpinner spinner, BigDecimal increment) {
-			this.spinner = spinner;
-			this.increment = increment;
-		}
 	
-		public void actionPerformed(ActionEvent arg0) {
-			spinner.setValue(new BigDecimal((Integer)spinner.getValue()).add(increment));
-		}
-	}
+	
+
+  /**
+   * SelectionListener that implements the dual spinner behavior.
+   */
+  public class DoubleSpinnerListener
+      implements ActionListener
+  {
+
+    private JSpinner spinner;
+
+    private BigDecimal increment;
+
+    public DoubleSpinnerListener(JSpinner spinner, BigDecimal increment) {
+      this.spinner = spinner;
+      this.increment = increment;
+    }
+
+    public void actionPerformed(ActionEvent arg0) {
+      Object value = spinner.getValue();
+      if (value == null)
+      {
+        value = BigDecimal.ZERO;
+      }
+      spinner.setValue(((BigDecimal) value).add(increment));
+    }
+  }
 	
 	
 	public void setVisible(boolean visible){
@@ -218,8 +227,8 @@ public class SwingSpinnerWidget extends AbstractSwingWidget<BigDecimal> {
 				outerStepSize = tempOuterIncrement;
 			}
 
-//			buttonUp.addSelectionListener( new DoubleSpinnerSelection( spinner, outerStepSize ) );
-//			buttonDown.addSelectionListener( new DoubleSpinnerSelection( spinner, outerStepSize.negate() ) );
+			buttonUp.addActionListener( new DoubleSpinnerListener( spinner, outerStepSize ) );
+			buttonDown.addActionListener( new DoubleSpinnerListener( spinner, outerStepSize.negate() ) );
 		}
 		else if ( control instanceof SingleSpinnerT )
 		{

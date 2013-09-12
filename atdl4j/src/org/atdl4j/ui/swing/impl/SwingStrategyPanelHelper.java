@@ -123,7 +123,6 @@ public class SwingStrategyPanelHelper
 	 */
 	public static void makeCompactGrid(Container parent, int rows, int cols, int initialX, int initialY, int xPad,
 			int yPad) {
-		
 		parent.setMaximumSize(new Dimension(Integer.MAX_VALUE, parent.getPreferredSize().height));
 		SpringLayout layout;
 		try {
@@ -147,6 +146,7 @@ public class SwingStrategyPanelHelper
 				constraints.setWidth(width);
 			}
 			x = Spring.sum(x, Spring.sum(width, Spring.constant(xPad)));
+			System.out.println("For col " + c + " set width " + width.getValue() + " and x=" + x.getValue());
 		}
 		
 		// Align all cells in each row and make them the same height.
