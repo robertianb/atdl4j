@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+	<!-- appender:console/stdout -->
+	<appender name="stdout" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="stdout0"/>
+	</appender>
+	<appender name="stdout0" class="org.apache.log4j.ConsoleAppender">
+		<param name="Threshold" value="ALL"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss,SSS} [%-5p] [%t] %c: %m\n"/>
+		</layout>
+	</appender>
+
+	
+	<!-- root finally -->
+	<root>
+		<priority value="info"/>
+		<appender-ref ref="stdout"/>
+	</root>
+</log4j:configuration>
