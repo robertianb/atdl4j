@@ -146,7 +146,6 @@ public class SwingStrategyPanelHelper
 				constraints.setWidth(width);
 			}
 			x = Spring.sum(x, Spring.sum(width, Spring.constant(xPad)));
-			System.out.println("For col " + c + " set width " + width.getValue() + " and x=" + x.getValue());
 		}
 		
 		// Align all cells in each row and make them the same height.
