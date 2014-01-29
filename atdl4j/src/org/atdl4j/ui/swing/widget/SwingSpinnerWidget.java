@@ -291,7 +291,9 @@ public class SwingSpinnerWidget extends AbstractSwingWidget<BigDecimal> {
 		Double initValue = (Double) ControlHelper.getInitValue(control, getAtdl4jOptions());
 		if (initValue != null) {
 			setValue(new BigDecimal(initValue));
-		}
+		} else {
+            setValue(null);
+        }
 	}
 
 	protected void processNullValueIndicatorChange(Boolean aOldNullValueInd,
